@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Animación Te Amo, Danna</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e4f1fe;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        #ventana {
+            width: 300px;
+            height: 200px;
+            background: url('ventanacerrada.png'); /* Sustituir con la URL de la imagen cerrada */
+            background-size: cover;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        #ventana.abierta {
+            background: url('ventanaabierta.png'); /* Sustituir con la URL de la imagen abierta */
+            background-size: cover;
+        }
+        #mensaje {
+            display: none;
+            color: white;
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        #ventana.abierta #mensaje {
+            display: block;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div id="ventana" onclick="abrirVentana()">
+        <p id="mensaje">Te amote mucho mi niña</p>
+    </div>
+
+    <script>
+        function abrirVentana() {
+            document.getElementById('ventana').classList.toggle('abierta');
+        }
+        document.getElementById('ventana').addEventListener('mouseover', function() {
+            this.style.transform = 'scale(1.1)';
+            this.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.4)';
+        });
+        document.getElementById('ventana').addEventListener('mouseout', function() {
+            this.style.transform = 'scale(1)';
+            this.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.3)';
+        });
+    </script>
+</body>
+</html>
